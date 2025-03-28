@@ -14,10 +14,10 @@
 <PageTitle>Build Some Text</PageTitle>
 
 <SectionContent SectionName="header-bar">
-    <span class="px-4 text-black">Talk with artificial intelligence to produce some text...</span>
+    <span class="px-4 text-black">In realtime talk with artificial intelligence to produce some text...</span>
     <MicControl  accesskey="m" Status="micStatus" OnClick="ChangeMicStatusAsync" class="ml-auto mr-4" />
     <Speaker @ref="@speaker" />
-    <label style="font-size: 0.75rem; padding-right:2px">Alt+M</label>
+    <label style="font-size: 0.75rem; padding-right:2px">(Alt+M)</label>
 
     <button @onclick="@(() => editContext?.Validate())" type="button"
         class="flex items-center gap-2 text-lg py-2 px-5 bg-gray-900/50 rounded-lg text-white font-semibold hover:bg-blue-600 active:bg-blue-900 active:translate-y-px transition-all">
@@ -35,8 +35,8 @@
 
     <div class="bg-gray-200 px-6 py-5 rounded-lg grid grid-cols-1 gap-x-8 gap-y-5 md:grid-cols-1 col-span-12">
         <div>
-            <label class="text-sm block font-medium text-gray-700">Text Block</label>
-            <InputTextArea rows="13" @bind-Value="@car.TextBlock"
+            <label class="text-sm block font-medium text-gray-700">Text Block (Alt+T)</label>
+            <InputTextArea accesskey="T" rows="13" @bind-Value="@car.TextBlock"
                 class="w-full mt-2 px-3 py-1 rounded-md shadow-md outline-2 focus:outline focus:outline-blue-500" />
         </div>
         @* <div>
@@ -89,7 +89,7 @@
             </div>
             <div>
                 <label class="text-sm block font-medium text-gray-700">Back left</label>
-                <TyreStatusPicker @bind-Value="@car.Tyres.BackLeft" />
+                <TyreStatusPicker @bind-Value="@car.Tyresbh.BackLeft" />
             </div>
             <div>
                 <label class="text-sm block font-medium text-gray-700">Back right</label>
@@ -108,6 +108,7 @@
         }
     </ul>
 </details>
+<p><strong>Talon Commands:</strong> Start Realtime, Stop Realtime, Stop Realtime and Copy, Stop Realtime and Paste</p>
 
 @if (messages.LastOrDefault() is { } lastMessage)
 {
