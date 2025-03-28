@@ -11,16 +11,14 @@ builder.Services.AddRazorComponents()
 
 // -----------------------------------------------------------------------------------
 // YOU MUST ENABLE ONE OF THE FOLLOWING (FOR EITHER OPENAI OR AZURE OPENAI)
-/*
 // If using OpenAI:
 var openAiClient = new OpenAIClient(
     builder.Configuration["OpenAI:Key"]!);
-*/
 
 // If using Azure OpenAI:
-var openAiClient = new AzureOpenAIClient(
-    new Uri(builder.Configuration["AzureOpenAI:Endpoint"]!),
-    new ApiKeyCredential(builder.Configuration["AzureOpenAI:Key"]!));
+// var openAiClient = new AzureOpenAIClient(
+//     new Uri(builder.Configuration["AzureOpenAI:Endpoint"]!),
+//     new ApiKeyCredential(builder.Configuration["AzureOpenAI:Key"]!));
 // -----------------------------------------------------------------------------------
 
 var realtimeClient = openAiClient.GetRealtimeConversationClient("gpt-4o-realtime-preview");

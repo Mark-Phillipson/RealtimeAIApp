@@ -16,7 +16,8 @@ public class CarDescriptor
 
     [Required, Range(0, 2000000)]
     public int? Mileage { get; set; }
-
+    public string? TextBlock { get; set; } = string.Empty;
+    //  public  bool StopListening { get; set; } = false;
     [Required]
     public List<string> ConditionNotes { get; set; } = [];
 
