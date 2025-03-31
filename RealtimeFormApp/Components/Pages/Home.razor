@@ -15,7 +15,7 @@
 
 <SectionContent SectionName="header-bar">
     <span class="px-4 text-black">In realtime talk with artificial intelligence to produce some text...</span>
-    <MicControl  accesskey="m" Status="micStatus" OnClick="ChangeMicStatusAsync" class="ml-auto mr-4" />
+    <MicControl accesskey="m" Status="micStatus" OnClick="ChangeMicStatusAsync" class="ml-auto mr-4" />
     <label style="font-size: 0.75rem; padding-right:2px;color:grey">(Alt+M)</label>
     <Speaker @ref="@speaker" />
 
@@ -35,13 +35,13 @@
 
     <div class="bg-gray-200 px-6 py-5 rounded-lg grid grid-cols-1 gap-x-8 gap-y-5 md:grid-cols-1 col-span-12">
         <div>
-            <label class="text-sm block font-medium text-gray-700">Text Block (Alt+T)</label>
+            <label class="block text-gray-700">Text Block (Alt+T)</label>
             <InputTextArea accesskey="T" rows="@car.TextAreaRows" @bind-Value="@car.TextBlock"
                 class="w-full mt-2 px-3 py-1 rounded-md shadow-md outline-2 focus:outline focus:outline-blue-500" />
         </div>
         <div>
-            <label class="text-sm block font-medium text-gray-700">Text Area Rows (Alt+R)</label>
-            <InputNumber style='width:12%'  accesskey='R' @bind-Value="@car.TextAreaRows"
+            <label>Text Area Rows (Alt+R)</label>
+            <InputNumber style='width:12%' accesskey='R' @bind-Value="@car.TextAreaRows"
                 class="mt-2 px-3 py-1 rounded-md shadow-md outline-2 focus:outline focus:outline-blue-500" />
         </div>
     </div>
@@ -108,7 +108,8 @@
         }
     </ul>
 </details>
-<p><strong>Talon Commands:</strong> Start Realtime, Stop Realtime, Stop Realtime Copy, Stop Realtime and Paste, Realtime Copy, Realtime Paste</p>
+<p><strong>Talon Commands:</strong> Start Realtime, Stop Realtime, Stop Realtime Copy, Stop Realtime and Paste, Realtime
+    Copy, Realtime Paste</p>
 <p>Do not leave the microphone on unnecessarily as it will cost money and kill the planet!</p>
 
 @if (messages.LastOrDefault() is { } lastMessage)
@@ -126,6 +127,7 @@
 
 @code {
     readonly CarDescriptor car = new();
+    private ConversationContentModalities SelectedContentModalities { get; set; } = ConversationContentModalities.Text;
     EditContext? editContext;
     Task<IJSObjectReference>? moduleTask;
     IJSObjectReference? mic;
@@ -154,6 +156,7 @@
             {
                 realtimeConversationManager = new("Car to be listed for sale",
                 RealtimeClient, micPipe.Reader.AsStream(), speaker!, UpdateModel, AddMessage);
+
                 await realtimeConversationManager.RunAsync(disposalCts.Token);
             }
             catch (Exception ex)
@@ -173,10 +176,10 @@
             {
                 StateHasChanged();
             }
-//            if (newCar.StopListening)
-//            {
-//                _ = ChangeMicStatusAsync(); // Fire-and-forget
-//            }
+            // if (newCar.StopListening)
+            // {
+            // _ = ChangeMicStatusAsync(); // Fire-and-forget
+            // }
         });
     }
 
@@ -270,4 +273,5 @@
                 break;
         }
     }
+
 }

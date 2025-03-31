@@ -11,8 +11,6 @@ public class RealtimeConversationManager<TModel>(string modelDescription, Realti
 {
     RealtimeConversationSession? session;
     string? prevModelJson;
-
-    // Call back into the UI layer to update the data in the form
     AIFunction[] tools = [AIFunctionFactory.Create((TModel modelData) => updateCallback(modelData), "Save_ModelData")];
 
     public async Task RunAsync(CancellationToken cancellationToken)
@@ -33,7 +31,7 @@ public class RealtimeConversationManager<TModel>(string modelDescription, Realti
                 After each time you have called the JSON updating tool, just reply OK.
                 """,
             Voice = ConversationVoice.Alloy,
-            ContentModalities = ConversationContentModalities.Text,
+            ContentModalities =  ConversationContentModalities.Text, 
             TurnDetectionOptions = ConversationTurnDetectionOptions.CreateServerVoiceActivityTurnDetectionOptions(detectionThreshold: 0.4f, silenceDuration: TimeSpan.FromMilliseconds(150)),
         };
 
