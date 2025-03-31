@@ -4,4 +4,6 @@ dotnet RealtimeFormApp.dll --urls "http://localhost:5006"
 
 Command to run in release mode on port five thousand and six:
 
+```pwsh
 dotnet run --configuration Release --urls "http://localhost:5006"
+```
