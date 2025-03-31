@@ -1,4 +1,4 @@
-
+dotnet publish -c Release
 CD C:\Users\MPhil\source\repos\RealtimeAIApp\RealtimeFormApp\bin\Release\net9.0\publish
 dotnet RealtimeFormApp.dll --urls "http://localhost:5006"
 

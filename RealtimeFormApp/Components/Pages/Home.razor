@@ -16,10 +16,10 @@
 <SectionContent SectionName="header-bar">
     <span class="px-4 text-black">In realtime talk with artificial intelligence to produce some text...</span>
     <MicControl  accesskey="m" Status="micStatus" OnClick="ChangeMicStatusAsync" class="ml-auto mr-4" />
+    <label style="font-size: 0.75rem; padding-right:2px;color:grey">(Alt+M)</label>
     <Speaker @ref="@speaker" />
-    <label style="font-size: 0.75rem; padding-right:2px">(Alt+M)</label>
 
-    <button @onclick="@(() => editContext?.Validate())" type="button"
+    @* <button @onclick="@(() => editContext?.Validate())" type="button"
         class="flex items-center gap-2 text-lg py-2 px-5 bg-gray-900/50 rounded-lg text-white font-semibold hover:bg-blue-600 active:bg-blue-900 active:translate-y-px transition-all">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-5">
@@ -27,7 +27,7 @@
                 d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
         </svg>
         Validate
-    </button>
+    </button> *@
 </SectionContent>
 
 <EditForm EditContext="@editContext" class="grid grid-cols-12 gap-x-10 gap-y-8">
@@ -40,8 +40,8 @@
                 class="w-full mt-2 px-3 py-1 rounded-md shadow-md outline-2 focus:outline focus:outline-blue-500" />
         </div>
         <div>
-            <label class="text-sm block font-medium text-gray-700">Text Area Rows</label>
-            <InputNumber @bind-Value="@car.TextAreaRows"
+            <label class="text-sm block font-medium text-gray-700">Text Area Rows (Alt+R)</label>
+            <InputNumber accesskey='R' @bind-Value="@car.TextAreaRows"
                 class="mt-2 px-3 py-1 rounded-md shadow-md outline-2 focus:outline focus:outline-blue-500" />
         </div>
     </div>
@@ -108,8 +108,8 @@
         }
     </ul>
 </details>
-<p><strong>Talon Commands:</strong> Start Realtime, Stop Realtime, Stop Realtime and Copy, Stop Realtime and Paste</p>
-<p>Do not leave the microphone on unnecessarily as it will cost money!</p>
+<p><strong>Talon Commands:</strong> Start Realtime, Stop Realtime, Stop Realtime Copy, Stop Realtime and Paste, Realtime Copy, Realtime Paste</p>
+<p>Do not leave the microphone on unnecessarily as it will cost money and kill the planet!</p>
 
 @if (messages.LastOrDefault() is { } lastMessage)
 {
